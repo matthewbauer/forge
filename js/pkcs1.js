@@ -278,7 +278,7 @@ function rsa_mgf1(seed, maskLength, hash) {
 
 /* ########## Begin module wrapper ########## */
 var name = 'pkcs1';
-if(typeof define !== 'function') {
+if(typeof define !== 'function') { return module.exports = function(e) {initModule(e);};
   // NodeJS -> AMD
   if(typeof module === 'object' && module.exports) {
     var nodeJS = true;

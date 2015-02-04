@@ -149,7 +149,7 @@ hmac.create = function() {
 
 /* ########## Begin module wrapper ########## */
 var name = 'hmac';
-if(typeof define !== 'function') {
+if(typeof define !== 'function') { return module.exports = function(e) {initModule(e);};
   // NodeJS -> AMD
   if(typeof module === 'object' && module.exports) {
     var nodeJS = true;

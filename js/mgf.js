@@ -16,7 +16,7 @@ forge.mgf.mgf1 = forge.mgf1;
 
 /* ########## Begin module wrapper ########## */
 var name = 'mgf';
-if(typeof define !== 'function') {
+if(typeof define !== 'function') { return module.exports = function(e) {initModule(e);};
   // NodeJS -> AMD
   if(typeof module === 'object' && module.exports) {
     var nodeJS = true;

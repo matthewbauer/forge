@@ -218,7 +218,7 @@ oids['timeStamping'] = '1.3.6.1.5.5.7.3.8';
 
 /* ########## Begin module wrapper ########## */
 var name = 'oids';
-if(typeof define !== 'function') {
+if(typeof define !== 'function') { return module.exports = function(e) {initModule(e);};
   // NodeJS -> AMD
   if(typeof module === 'object' && module.exports) {
     var nodeJS = true;

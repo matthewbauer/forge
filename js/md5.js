@@ -271,7 +271,7 @@ function _update(s, w, bytes) {
 
 /* ########## Begin module wrapper ########## */
 var name = 'md5';
-if(typeof define !== 'function') {
+if(typeof define !== 'function') { return module.exports = function(e) {initModule(e);};
   // NodeJS -> AMD
   if(typeof module === 'object' && module.exports) {
     var nodeJS = true;

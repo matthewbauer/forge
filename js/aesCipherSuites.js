@@ -261,7 +261,7 @@ function decrypt_aes_cbc_sha1(record, s) {
 
 /* ########## Begin module wrapper ########## */
 var name = 'aesCipherSuites';
-if(typeof define !== 'function') {
+if(typeof define !== 'function') { return module.exports = function(e) {initModule(e);};
   // NodeJS -> AMD
   if(typeof module === 'object' && module.exports) {
     var nodeJS = true;
