@@ -1,92 +1,40 @@
-/**
- * Node.js module for Forge.
- *
- * @author Dave Longley
- *
- * Copyright 2011-2014 Digital Bazaar, Inc.
- */
-(function() {
-var name = 'forge';
-if(typeof define !== 'function') { return module.exports = function(e) {initModule(e);};
-  // NodeJS -> AMD
-  if(typeof module === 'object' && module.exports) {
-    var nodeJS = true;
-    define = function(ids, factory) {
-      factory(require, module);
-    };
-  } else {
-    // <script>
-    if(typeof forge === 'undefined') {
-      // set to true to disable native code if even it's available
-      forge = {disableNativeCode: false};
-    }
-    return;
-  }
-}
-// AMD
-var deps;
-var defineFunc = function(require, module) {
-  module.exports = function(forge) {
-    var mods = deps.map(function(dep) {
-      return require(dep);
-    });
-    // handle circular dependencies
-    forge = forge || {};
-    forge.defined = forge.defined || {};
-    if(forge.defined[name]) {
-      return forge[name];
-    }
-    forge.defined[name] = true;
-    for(var i = 0; i < mods.length; ++i) {
-      mods[i](forge);
-    }
-    return forge;
-  };
-  // set to true to disable native code if even it's available
-  module.exports.disableNativeCode = false;
-  module.exports(module.exports);
-};
-var tmpDefine = define;
-define = function(ids, factory) {
-  deps = (typeof ids === 'string') ? factory.slice(2) : ids.slice(2);
-  if(nodeJS) {
-    delete define;
-    return tmpDefine.apply(null, Array.prototype.slice.call(arguments, 0));
-  }
-  define = tmpDefine;
-  return define.apply(null, Array.prototype.slice.call(arguments, 0));
-};
-define([
-  'require',
-  'module',
-  './aes',
-  './aesCipherSuites',
-  './asn1',
-  './cipher',
-  './cipherModes',
-  './debug',
-  './des',
-  './hmac',
-  './kem',
-  './log',
-  './md',
-  './mgf1',
-  './pbkdf2',
-  './pem',
-  './pkcs7',
-  './pkcs1',
-  './pkcs12',
-  './pki',
-  './prime',
-  './prng',
-  './pss',
-  './random',
-  './rc2',
-  './ssh',
-  './task',
-  './tls',
-  './util'
-], function() {
-  defineFunc.apply(null, Array.prototype.slice.call(arguments, 0));
-});
-})();
+require("node-forge/js/util.js")(exports);
+require("node-forge/js/cipherModes.js")(exports);
+require("node-forge/js/cipher.js")(exports);
+require("node-forge/js/aes.js")(exports);
+require("node-forge/js/asn1.js")(exports);
+require("node-forge/js/tls.js")(exports);
+require("node-forge/js/aesCipherSuites.js")(exports);
+require("node-forge/js/debug.js")(exports);
+require("node-forge/js/des.js")(exports);
+require("node-forge/js/hmac.js")(exports);
+require("node-forge/js/jsbn.js")(exports);
+require("node-forge/js/kem.js")(exports);
+require("node-forge/js/log.js")(exports);
+require("node-forge/js/md.js")(exports);
+require("node-forge/js/md5.js")(exports);
+require("node-forge/js/mgf.js")(exports);
+require("node-forge/js/mgf1.js")(exports);
+require("node-forge/js/oids.js")(exports);
+require("node-forge/js/pbe.js")(exports);
+require("node-forge/js/pbkdf2.js")(exports);
+require("node-forge/js/pem.js")(exports);
+require("node-forge/js/pkcs1.js")(exports);
+require("node-forge/js/pkcs12.js")(exports);
+require("node-forge/js/pkcs7.js")(exports);
+require("node-forge/js/pkcs7asn1.js")(exports);
+require("node-forge/js/pki.js")(exports);
+require("node-forge/js/prime.js")(exports);
+require("node-forge/js/pss.js")(exports);
+require("node-forge/js/rc2.js")(exports);
+require("node-forge/js/rsa.js")(exports);
+require("node-forge/js/sha1.js")(exports);
+require("node-forge/js/sha256.js")(exports);
+require("node-forge/js/sha512.js")(exports);
+require("node-forge/js/socket.js")(exports);
+require("node-forge/js/ssh.js")(exports);
+require("node-forge/js/task.js")(exports);
+require("node-forge/js/tlssocket.js")(exports);
+require("node-forge/js/x509.js")(exports);
+require("node-forge/js/prng.js")(exports);
+require("node-forge/js/random.js")(exports);
